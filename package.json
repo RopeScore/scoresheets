@@ -1,0 +1,26 @@
+{
+  "name": "webcomponents",
+  "version": "1.0.0",
+  "description": "So I want to experiment a little with webcomponents",
+  "scripts": {
+    "build": "tsc"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svbeon/webcomponents.git"
+  },
+  "keywords": [
+    "webcomponents"
+  ],
+  "author": "Svante Bengtson <svante@swantzter.se>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/svbeon/webcomponents/issues"
+  },
+  "homepage": "https://github.com/svbeon/webcomponents#readme",
+  "devDependencies": {
+    "standard": "^14.3.1",
+    "typescript": "^3.7.4"
+  }
+}
