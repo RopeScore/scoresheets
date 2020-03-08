@@ -4,9 +4,10 @@
  * The idea is that this component will create an A4 paper/page when printed,
  * hopefully with slots for header and footer
  */
-class A4Page extends HTMLElement {
+class PrintPage extends HTMLElement {
   private shadow: ShadowRoot
   private landscape: boolean = false
+  private letter: boolean = false
 
   constructor() {
     // Always call super first in constructor
@@ -18,13 +19,9 @@ class A4Page extends HTMLElement {
     this.render()
   }
 
-  initShadow() {
-    // Create a shadow root
-
-  }
-
   initAttributes() {
-    this.landscape = ![null, 'portrait'].includes(this.getAttribute('orientation'))
+    this.landscape = this.hasAttribute('landscape')
+    this.letter = this.hasAttribute('letter')
   }
 
   render() {
@@ -49,8 +46,15 @@ class A4Page extends HTMLElement {
     style.textContent = `
       :host {
         display: flex;
+        ${this.letter ?
+        `
+        width: ${this.landscape ? '11' : '8.5'}in;
+        height: ${this.landscape ? '8.5' : '11'}in;
+        ` :
+        `
         width: ${this.landscape ? '297' : '210'}mm;
         height: ${this.landscape ? '210' : '297'}mm;
+        `}
         border: 1px solid #000;
         box-sizing: border-box;
         break-after: page;
@@ -58,10 +62,17 @@ class A4Page extends HTMLElement {
         position: relative;
         flex-direction: column;
         justify-content: space-between;
+        align-content: stretch;
       }
 
       :host * {
         box-sizing: border-box;
+      }
+
+      @media print {
+        :host {
+          border: none;
+        }
       }
 
       @page {
@@ -92,4 +103,4 @@ class A4Page extends HTMLElement {
   }
 }
 
-customElements.define('a4-page', A4Page)
+customElements.define('print-page', PrintPage)

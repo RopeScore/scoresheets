@@ -21,6 +21,6 @@
   "homepage": "https://github.com/svbeon/webcomponents#readme",
   "devDependencies": {
     "standard": "^14.3.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   }
 }
