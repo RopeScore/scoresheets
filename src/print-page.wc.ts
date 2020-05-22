@@ -1,7 +1,7 @@
 /* eslint-env browser */
 
 /**
- * The idea is that this component will create an A4 paper/page when printed,
+ * The idea is that this component will create an A4 or letter paper/page when printed,
  * hopefully with slots for header and footer
  */
 class PrintPage extends HTMLElement {
@@ -37,10 +37,10 @@ class PrintPage extends HTMLElement {
     footerSlot.setAttribute('name', 'footer')
     footer.appendChild(footerSlot)
 
-    // main
-    const main = document.createElement('main')
-    main.innerHTML = this.shadow.host.innerHTML
-    main.querySelectorAll("[slot]").forEach(e => e.parentNode!.removeChild(e))
+    // body slot
+    const body = document.createElement('main')
+    const bodySlot = document.createElement('slot')
+    body.appendChild(bodySlot)
 
     const style = document.createElement('style');
     style.textContent = `
@@ -76,7 +76,7 @@ class PrintPage extends HTMLElement {
       }
 
       @page {
-        size: A4 ${this.landscape ? 'landscape' : 'portrait'}
+        size: ${this.letter ? 'letter' : 'A4'} ${this.landscape ? 'landscape' : 'portrait'}
       }
 
       header {
@@ -98,7 +98,7 @@ class PrintPage extends HTMLElement {
 
     this.shadow.appendChild(style)
     this.shadow.appendChild(header)
-    this.shadow.appendChild(main)
+    this.shadow.appendChild(body)
     this.shadow.appendChild(footer)
   }
 }

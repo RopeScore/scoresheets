@@ -1,6 +1,6 @@
 {
   "name": "webcomponents",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "So I want to experiment a little with webcomponents",
   "scripts": {
     "build": "tsc",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/svbeon/webcomponents/issues"
   },
-  "homepage": "https://github.com/svbeon/webcomponents#readme",
+  "homepage": "https://wc.ropescore.com",
   "devDependencies": {
     "standard": "^14.3.1",
     "typescript": "^3.8.3"

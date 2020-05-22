@@ -52,7 +52,7 @@ class HumanNumber extends HTMLElement {
         display: grid;
         width: 100%;
         height: ${this.twoRow ? '15mm' : '25mm'};
-        margin-bottom: 5mm;
+        margin-bottom: 5mm !important;
         box-sizing: border-box;
         grid-template-columns: 40mm 1fr 30mm 1fr repeat(10, 2fr) 30mm;
         grid-template-rows: 1fr 1fr ${this.twoRow ? '' : '1fr'};
